@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import SearchForm from "./components/SearchForm";
 import ResultTable from "./components/ResultTable";
 import LoadingIndicator from "./components/LoadingIndicator";
@@ -31,8 +31,10 @@ export default function App() {
                 fetch("/ketqua.json").then((r) => r.json()),
             ]);
 
-            const foundStudent = svRes.find((s) => s.sid === studentId);
-            if (!foundStudent) throw new Error(`Không tìm thấy sinh viên có mã ${studentId}`);
+            const existedStudent = svRes.find((s) => s.sid === studentId);
+            if (!existedStudent) {
+                throw new Error(`Không tìm thấy sinh viên có mã ${studentId}`);
+            }
 
             const studentResults = kqRes.filter((r) => r.sid === studentId);
             if (studentResults.length === 0) throw new Error("Sinh viên chưa có kết quả học tập.");
@@ -42,7 +44,7 @@ export default function App() {
                 return { ...r, ...hp };
             });
 
-            setStudent(foundStudent);
+            setStudent(existedStudent);
             setResults(fullResults);
         } catch (err) {
             setError(err.message || "Lỗi tải dữ liệu");
@@ -50,6 +52,17 @@ export default function App() {
             setIsLoading(false);
         }
     };
+
+    useEffect(() => {
+        if (!studentId.trim()) return;
+
+        const delayDebounce = setTimeout(() => {
+            handleSearch();
+        }, 1000);
+
+        return () => clearTimeout(delayDebounce);
+    }, [studentId]);
+
 
     return (
         <div className="app">
