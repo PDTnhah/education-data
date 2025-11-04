@@ -1,0 +1,31 @@
+[
+  { "sid": "20225158", "cid": "SSH1141", "term": "20241", "score": 4.0, "grade": "A" },
+  { "sid": "20225158", "cid": "PE2201", "term": "20241", "score": 4.0, "grade": "A" },
+  { "sid": "20225158", "cid": "IT3180", "term": "20241", "score": 2.5, "grade": "C+" },
+  { "sid": "20225158", "cid": "IT3090", "term": "20241", "score": 3.0, "grade": "B" },
+  { "sid": "20225158", "cid": "IT3070", "term": "20241", "score": 2.0, "grade": "C" },
+  { "sid": "20225158", "cid": "IT3040", "term": "20241", "score": 2.5, "grade": "C+" },
+  { "sid": "20225158", "cid": "ET3262", "term": "20241", "score": 4.0, "grade": "A" },
+
+  { "sid": "20225158", "cid": "PE2202", "term": "20242", "score": 2.0, "grade": "C" },
+  { "sid": "20225158", "cid": "PE2401", "term": "20242", "score": 3.0, "grade": "B" },
+  { "sid": "20225158", "cid": "IT4785", "term": "20242", "score": 4.0, "grade": "A" },
+  { "sid": "20225158", "cid": "IT4611", "term": "20242", "score": 3.0, "grade": "B" },
+  { "sid": "20225158", "cid": "IT3931", "term": "20242", "score": 4.0, "grade": "A" },
+  { "sid": "20225158", "cid": "IT3421", "term": "20242", "score": 3.5, "grade": "B+" },
+  { "sid": "20225158", "cid": "IT3170", "term": "20242", "score": 2.0, "grade": "C" },
+  { "sid": "20225158", "cid": "IT3120", "term": "20242", "score": 3.5, "grade": "B+" },
+  { "sid": "20225158", "cid": "IT3080", "term": "20242", "score": 3.0, "grade": "B" },
+
+  { "sid": "20224953", "cid": "IT3931", "term": "20242", "score": 4.0, "grade": "A" },
+  { "sid": "20224953", "cid": "IT3421", "term": "20242", "score": 3.5, "grade": "B+" },
+  { "sid": "20224953", "cid": "IT3170", "term": "20242", "score": 2.0, "grade": "C" },
+  { "sid": "20224953", "cid": "IT3120", "term": "20242", "score": 3.5, "grade": "B+" },
+  { "sid": "20224953", "cid": "IT3080", "term": "20242", "score": 3.0, "grade": "B" },
+
+  { "sid": "20226868", "cid": "IT3180", "term": "20241", "score": 2.5, "grade": "C+" },
+  { "sid": "20226868", "cid": "IT3090", "term": "20241", "score": 3.0, "grade": "B" },
+  { "sid": "20226868", "cid": "IT3070", "term": "20241", "score": 2.0, "grade": "C" },
+  { "sid": "20226868", "cid": "IT3040", "term": "20241", "score": 2.5, "grade": "C+" },
+  { "sid": "20226868", "cid": "ET3262", "term": "20241", "score": 4.0, "grade": "A" }
+]

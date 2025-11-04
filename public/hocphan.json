@@ -1,0 +1,18 @@
+[
+  { "cid": "SSH1141", "name": "Lịch sử Đảng cộng sản Việt Nam", "credits": 2 },
+  { "cid": "PE2201", "name": "Bóng đá 1", "credits": 0 },
+  { "cid": "IT3180", "name": "Nhập môn công nghệ phần mềm", "credits": 3 },
+  { "cid": "IT3090", "name": "Cơ sở dữ liệu", "credits": 3 },
+  { "cid": "IT3070", "name": "Nguyên lý hệ điều hành", "credits": 3 },
+  { "cid": "IT3040", "name": "Kỹ thuật lập trình", "credits": 2 },
+  { "cid": "ET3262", "name": "Tư duy công nghệ và thiết kế kỹ thuật", "credits": 2 },
+  { "cid": "PE2202", "name": "Bóng đá 2", "credits": 0 },
+  { "cid": "PE2401", "name": "Bóng bàn 1", "credits": 0 },
+  { "cid": "IT4785", "name": "Phát triển ứng dụng cho thiết bị di động", "credits": 2 },
+  { "cid": "IT4611", "name": "Các hệ thống phân tán và ứng dụng", "credits": 2 },
+  { "cid": "IT3931", "name": "Project II", "credits": 2 },
+  { "cid": "IT3421", "name": "Điện tử cho CNTT", "credits": 2 },
+  { "cid": "IT3170", "name": "Thuật toán ứng dụng", "credits": 2 },
+  { "cid": "IT3120", "name": "Phân tích và thiết kế hệ thống", "credits": 2 },
+  { "cid": "IT3080", "name": "Mạng máy tính", "credits": 3 }
+]
