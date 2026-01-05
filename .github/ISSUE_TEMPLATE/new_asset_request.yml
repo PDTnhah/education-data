@@ -12,7 +12,7 @@ body:
     id: chain_id
     attributes:
       label: Origin Chain (ID mạng lưới)
-      description: Ví dụ: gear_testnet, ethereum, bsc
+      description: gear_testnet, ethereum, bsc
       placeholder: gear_testnet
     validations:
       required: true
