@@ -1,0 +1,69 @@
+name: 💰 New Asset Request
+description: Yêu cầu thêm token/asset mới vào hệ thống (Dành cho BD/Ops)
+title: "[New Asset]: "
+labels: ["data-ingestion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Xin vui lòng điền đầy đủ thông tin bên dưới. Hệ thống sẽ tự động cập nhật vào file JSON.
+
+  - type: input
+    id: chain_id
+    attributes:
+      label: Origin Chain (ID mạng lưới)
+      description: gear_testnet, ethereum, bsc
+      placeholder: gear_testnet
+    validations:
+      required: true
+
+  - type: input
+    id: asset_name
+    attributes:
+      label: Tên hiển thị (Display Name)
+      placeholder: Gear Staging Testnet
+    validations:
+      required: true
+
+  - type: input
+    id: asset_symbol
+    attributes:
+      label: Symbol (Mã token)
+      placeholder: Unit
+    validations:
+      required: true
+
+  - type: dropdown
+    id: asset_type
+    attributes:
+      label: Loại tài sản (Asset Type)
+      options:
+        - NATIVE
+        - ERC20
+        - BEP20
+        - SPL
+    validations:
+      required: true
+
+  - type: input
+    id: decimals
+    attributes:
+      label: Số thập phân (Decimals)
+      placeholder: 12
+    validations:
+      required: true
+
+  - type: input
+    id: min_amount
+    attributes:
+      label: Số lượng tối thiểu (Min Amount)
+      placeholder: 500
+    validations:
+      required: true
+
+  - type: input
+    id: icon_url
+    attributes:
+      label: Icon Path/URL
+      description: Đường dẫn file ảnh hoặc URL
+      placeholder: /assets/chain-assets/gear_testnet-native-unit.png
