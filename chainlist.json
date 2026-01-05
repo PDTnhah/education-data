@@ -1,0 +1,16 @@
+{
+  "chainflip_assethub-NATIVE-DOT": {
+    "originChain": "chainflip_assethub",
+    "slug": "chainflip_assethub-NATIVE-DOT",
+    "name": "Chainflip DOT",
+    "symbol": "DOT",
+    "decimals": 10,
+    "priceId": null,
+    "minAmount": "100000000",
+    "assetType": "NATIVE",
+    "metadata": null,
+    "multiChainAsset": "DOT-ChainflipDOT",
+    "hasValue": false,
+    "icon": "/assets/chain-assets/chainflip_assethub-native-dot.png"
+  }
+}
