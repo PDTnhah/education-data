@@ -12,7 +12,7 @@ body:
     id: chain_id
     attributes:
       label: Origin Chain (ID mạng lưới)
-      description: gear_testnet, ethereum, bsc
+      description: ethereum, bsc
       placeholder: gear_testnet
     validations:
       required: true
@@ -49,17 +49,16 @@ body:
     id: decimals
     attributes:
       label: Số thập phân (Decimals)
-      # LỖI Ở ĐÂY: Phải thêm dấu ngoặc kép để biến số thành string
-      placeholder: "12" 
+      placeholder: 12
     validations:
       required: true
+      # Có thể dùng regex để bắt buộc nhập số, nhưng Github Form hỗ trợ regex hạn chế, ta xử lý ở Action sau.
 
   - type: input
     id: min_amount
     attributes:
       label: Số lượng tối thiểu (Min Amount)
-      # LỖI Ở ĐÂY: Phải thêm dấu ngoặc kép
-      placeholder: "500"
+      placeholder: 500
     validations:
       required: true
 
