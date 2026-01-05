@@ -1,0 +1,93 @@
+name: Process New Asset Issue
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  update-json:
+    # Chỉ chạy nếu issue có label 'data-ingestion'
+    if: contains(github.event.issue.labels.*.name, 'data-ingestion')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Parse Issue Body
+        uses: stefanbuck/github-issue-parser@v3
+        id: issue-parser
+        with:
+          template-path: .github/ISSUE_TEMPLATE/new_asset_request.yml
+
+      - name: Transform and Merge Data
+        uses: actions/github-script@v7
+        env:
+          PARSED_JSON: ${{ steps.issue-parser.outputs.jsonString }}
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            
+            // 1. Lấy dữ liệu từ bước Parse
+            const parsedData = JSON.parse(process.env.PARSED_JSON);
+            console.log("Raw Form Data:", parsedData);
+
+            // 2. Map dữ liệu từ Form sang chuẩn JSON của bạn
+            // Lưu ý: Các key (chain_id, asset_symbol...) phải khớp với `id` trong file YAML ở Bước 1
+            
+            const originChain = parsedData.chain_id;
+            const symbol = parsedData.asset_symbol;
+            const type = parsedData.asset_type;
+            
+            // Tự động tạo slug để tránh BD nhập sai
+            const slug = `${originChain}-${type}-${symbol}`; 
+
+            const newEntry = {
+              [slug]: {
+                originChain: originChain,
+                slug: slug,
+                name: parsedData.asset_name,
+                symbol: symbol,
+                decimals: parseInt(parsedData.decimals),
+                priceId: null, // Default
+                minAmount: parsedData.min_amount,
+                assetType: type,
+                metadata: null, // Default
+                multiChainAsset: null, // Default
+                hasValue: false, // Default
+                icon: parsedData.icon_url
+              }
+            };
+
+            // 3. Đọc file JSON hiện có và merge
+            const targetFile = 'path/to/your/data.json'; // ĐỔI ĐƯỜNG DẪN NÀY
+            
+            let currentData = {};
+            try {
+                if (fs.existsSync(targetFile)) {
+                    const rawContent = fs.readFileSync(targetFile, 'utf8');
+                    currentData = JSON.parse(rawContent);
+                }
+            } catch (e) {
+                console.log("File chưa tồn tại hoặc lỗi, tạo mới.");
+            }
+
+            // Merge object mới vào
+            Object.assign(currentData, newEntry);
+
+            // Ghi lại file
+            fs.writeFileSync(targetFile, JSON.stringify(currentData, null, 2));
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "feat: add new asset ${{ steps.issue-parser.outputs.issueparser_asset_symbol }}"
+          title: "Auto-generated: Add asset ${{ steps.issue-parser.outputs.issueparser_asset_symbol }}"
+          body: "Tự động tạo PR từ Issue #${{ github.event.issue.number }}. Vui lòng review JSON trước khi merge."
+          branch: "add-asset-${{ github.event.issue.number }}"
+          base: "main"
